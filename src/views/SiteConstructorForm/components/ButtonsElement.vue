@@ -6,15 +6,28 @@ import { BUTTONS_DISPLAY_OPTIONS } from '@/views/SiteConstructorForm/consts.ts'
 const props = defineProps<{ modelValue: ButtonData }>()
 const emit = defineEmits<{ 'update:modelValue': [value: ButtonData] }>()
 
-const local = reactive({ ...props.modelValue, buttons: props.modelValue.buttons.map((b) => ({ ...b })) })
+const local = reactive<ButtonData>({
+  buttonColor: props.modelValue.buttonColor,
+  buttonDisplay: props.modelValue.buttonDisplay,
+  buttons: props.modelValue.buttons.map((b) => ({ ...b })),
+})
 
-watch(local, (val) => emit('update:modelValue', { ...val, buttons: val.buttons.map((b) => ({ ...b })) }), { deep: true })
+watch(
+  local,
+  (val: ButtonData) =>
+    emit('update:modelValue', {
+      buttonColor: val.buttonColor,
+      buttonDisplay: val.buttonDisplay,
+      buttons: val.buttons.map((b) => ({ name: b.name, url: b.url })),
+    }),
+  { deep: true },
+)
 
-function addButton() {
+function addButton(): void {
   local.buttons.push({ name: '', url: '' })
 }
 
-function removeButton(index: number) {
+function removeButton(index: number): void {
   local.buttons.splice(index, 1)
 }
 </script>

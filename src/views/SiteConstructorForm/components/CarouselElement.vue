@@ -21,16 +21,17 @@ watch(
   { deep: true },
 )
 
-function addItem() {
+function addItem(): void {
   local.items.push({ id: crypto.randomUUID(), url: '', file: null })
 }
 
-function removeItem(id: string) {
+function removeItem(id: string): void {
   local.items = local.items.filter((item) => item.id !== id)
 }
 
-function onFileChange(item: CarouselItem, files: File[]) {
-  item.file = files[0] ?? null
+function onFileChange(item: CarouselItem, files: unknown): void {
+  const file = Array.isArray(files) ? (files[0] as File | undefined) ?? null : null
+  item.file = file
   if (item.file) item.url = ''
 }
 </script>

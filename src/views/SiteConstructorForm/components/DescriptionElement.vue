@@ -5,9 +5,9 @@ import type { DescriptionData } from '@/views/SiteConstructorForm/types.ts'
 const props = defineProps<{ modelValue: DescriptionData }>()
 const emit = defineEmits<{ 'update:modelValue': [value: DescriptionData] }>()
 
-const local = reactive({ ...props.modelValue })
+const local = reactive<DescriptionData>({ ...props.modelValue })
 
-watch(local, (val) => emit('update:modelValue', { ...val }))
+watch(local, (val: DescriptionData) => emit('update:modelValue', { text: val.text }))
 </script>
 
 <template>

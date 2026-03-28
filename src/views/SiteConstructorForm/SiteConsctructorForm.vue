@@ -18,11 +18,11 @@ const seoSchema = z.object({
 
 const { defineField, handleSubmit, errors } = useForm<SeoForm>({
   validationSchema: {
-    siteTitle: (val: string) => {
+    siteTitle: (val: unknown): boolean | string => {
       const result = seoSchema.shape.siteTitle.safeParse(val)
       return result.success ? true : result.error.issues[0]?.message ?? 'Invalid'
     },
-    siteDescription: (val: string) => {
+    siteDescription: (val: unknown): boolean | string => {
       const result = seoSchema.shape.siteDescription.safeParse(val)
       return result.success ? true : result.error.issues[0]?.message ?? 'Invalid'
     },

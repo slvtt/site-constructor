@@ -5,9 +5,9 @@ import type { ImageData } from '@/views/SiteConstructorForm/types.ts'
 const props = defineProps<{ modelValue: ImageData }>()
 const emit = defineEmits<{ 'update:modelValue': [value: ImageData] }>()
 
-const local = reactive({ ...props.modelValue })
+const local = reactive<ImageData>({ ...props.modelValue })
 
-watch(local, (val) => emit('update:modelValue', { ...val }))
+watch(local, (val: ImageData) => emit('update:modelValue', { title: val.title, link: val.link }))
 </script>
 
 <template>

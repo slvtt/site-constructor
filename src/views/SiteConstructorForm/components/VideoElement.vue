@@ -5,9 +5,9 @@ import type { VideoData } from '@/views/SiteConstructorForm/types.ts'
 const props = defineProps<{ modelValue: VideoData }>()
 const emit = defineEmits<{ 'update:modelValue': [value: VideoData] }>()
 
-const local = reactive({ ...props.modelValue })
+const local = reactive<VideoData>({ ...props.modelValue })
 
-watch(local, (val) => emit('update:modelValue', { ...val }))
+watch(local, (val: VideoData) => emit('update:modelValue', { url: val.url }))
 </script>
 
 <template>
