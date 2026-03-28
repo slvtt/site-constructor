@@ -42,11 +42,7 @@ function removeButton(index: number): void {
         :items="BUTTONS_DISPLAY_OPTIONS"
         placeholder="Отображение кнопок"
       />
-      <div
-        v-for="(btn, index) in local.buttons"
-        :key="index"
-        class="flex gap-2 items-center"
-      >
+      <div v-for="(btn, index) in local.buttons" :key="index" class="flex gap-2 items-center">
         <UInput v-model="btn.name" placeholder="Текст кнопки" class="flex-1" />
         <UInput v-model="btn.url" placeholder="Ссылка (опционально)" class="flex-1" />
         <UButton

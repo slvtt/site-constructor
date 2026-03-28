@@ -30,7 +30,7 @@ function removeItem(id: string): void {
 }
 
 function onFileChange(item: CarouselItem, files: unknown): void {
-  const file = Array.isArray(files) ? (files[0] as File | undefined) ?? null : null
+  const file = Array.isArray(files) ? ((files[0] as File | undefined) ?? null) : null
   item.file = file
   if (item.file) item.url = ''
 }
@@ -68,11 +68,7 @@ function onFileChange(item: CarouselItem, files: unknown): void {
           </UButton>
         </div>
 
-        <UInput
-          v-model="item.url"
-          placeholder="Ссылка на изображение"
-          :disabled="!!item.file"
-        />
+        <UInput v-model="item.url" placeholder="Ссылка на изображение" :disabled="!!item.file" />
 
         <div class="flex items-center gap-2">
           <div class="h-px flex-1 bg-gray-100" />

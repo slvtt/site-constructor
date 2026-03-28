@@ -4,7 +4,12 @@ import { VueDraggable } from 'vue-draggable-plus'
 import { useForm } from 'vee-validate'
 import { z } from 'zod'
 import { SELECT_OPTIONS, DEFAULT_VALUES } from '@/views/SiteConstructorForm/consts.ts'
-import type { SeoForm, PageElement, FieldType, ElementData } from '@/views/SiteConstructorForm/types.ts'
+import type {
+  SeoForm,
+  PageElement,
+  FieldType,
+  ElementData,
+} from '@/views/SiteConstructorForm/types.ts'
 import CarouselElement from '@/views/SiteConstructorForm/components/CarouselElement.vue'
 import ImageElement from '@/views/SiteConstructorForm/components/ImageElement.vue'
 import ButtonsElement from '@/views/SiteConstructorForm/components/ButtonsElement.vue'
@@ -20,11 +25,11 @@ const { defineField, handleSubmit, errors } = useForm<SeoForm>({
   validationSchema: {
     siteTitle: (val: unknown): boolean | string => {
       const result = seoSchema.shape.siteTitle.safeParse(val)
-      return result.success ? true : result.error.issues[0]?.message ?? 'Invalid'
+      return result.success ? true : (result.error.issues[0]?.message ?? 'Invalid')
     },
     siteDescription: (val: unknown): boolean | string => {
       const result = seoSchema.shape.siteDescription.safeParse(val)
-      return result.success ? true : result.error.issues[0]?.message ?? 'Invalid'
+      return result.success ? true : (result.error.issues[0]?.message ?? 'Invalid')
     },
   },
 })
@@ -46,7 +51,10 @@ const DEFAULT_DATA: Record<FieldType, ElementData> = {
   description: { ...DEFAULT_VALUES.description },
   image: { ...DEFAULT_VALUES.image },
   banner: { ...DEFAULT_VALUES.banner },
-  carousel: { ...DEFAULT_VALUES.carousel, items: [{ id: crypto.randomUUID(), url: '', file: null }] },
+  carousel: {
+    ...DEFAULT_VALUES.carousel,
+    items: [{ id: crypto.randomUUID(), url: '', file: null }],
+  },
   button: { ...DEFAULT_VALUES.button, buttons: [{ name: '', url: '' }] },
 }
 
