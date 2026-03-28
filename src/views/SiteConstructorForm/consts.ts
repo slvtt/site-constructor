@@ -26,8 +26,9 @@ export const BUTTONS_DISPLAY_OPTIONS = [
 export const DEFAULT_VALUES = {
   video: { url: '' },
   description: { text: '' },
+  image: { title: '', link: '' },
   banner: { title: '', link: '' },
-  carousel: { carouselTitle: '', urls: [{ url: '' }] },
+  carousel: { carouselTitle: '', items: [{ id: crypto.randomUUID(), url: '', file: null }] },
   button: {
     buttonColor: '#000000',
     buttonDisplay: 'HORIZONTAL',
