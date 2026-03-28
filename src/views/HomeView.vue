@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import SiteConsctructorForm from '@/views/SiteConstructorForm/SiteConsctructorForm.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <UContainer>
+      <SiteConsctructorForm />
+    </UContainer>
   </main>
 </template>

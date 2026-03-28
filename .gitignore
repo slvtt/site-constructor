@@ -32,6 +32,9 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
+auto-imports.d.ts
+components.d.ts
+
 # Vitest
 __screenshots__/
 
